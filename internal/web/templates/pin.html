@@ -1,0 +1,12 @@
+{{define "content"}}
+<p class="brand">Fileshare</p>
+<h1>Enter PIN</h1>
+<p class="sub">Enter the 4-digit key to download this file.</p>
+{{if .Error}}<div class="error">{{.Error}}</div>{{end}}
+<form method="post" action="/f/{{.ID}}">
+  <label>PIN
+    <input type="text" name="pin" inputmode="numeric" pattern="\d{4}" maxlength="4" minlength="4" required autofocus autocomplete="one-time-code">
+  </label>
+  <button type="submit">Download</button>
+</form>
+{{end}}

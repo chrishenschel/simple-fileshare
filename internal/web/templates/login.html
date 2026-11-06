@@ -1,0 +1,12 @@
+{{define "content"}}
+<p class="brand">Fileshare</p>
+<h1>Sign in</h1>
+<p class="sub">Enter the master password to upload files.</p>
+{{if .Error}}<div class="error">{{.Error}}</div>{{end}}
+<form method="post" action="/login">
+  <label>Master password
+    <input type="password" name="password" required autofocus autocomplete="current-password">
+  </label>
+  <button type="submit">Sign in</button>
+</form>
+{{end}}

@@ -1,0 +1,36 @@
+{{define "content"}}
+<div class="top">
+  <p class="brand">Fileshare</p>
+  <form method="post" action="/logout" style="padding:0;border:0;background:transparent;display:inline">
+    <button class="secondary" type="submit">Log out</button>
+  </form>
+</div>
+<h1>Upload</h1>
+<p class="sub">Pick a file, set a 4-digit PIN, choose when it expires.</p>
+{{if .Error}}<div class="error">{{.Error}}</div>{{end}}
+{{if .Link}}
+<div class="ok panel" style="margin-bottom:1rem">
+  <div><strong>Share link</strong><br>{{.Link}}</div>
+  <div><strong>PIN</strong> {{.PIN}}</div>
+</div>
+{{end}}
+<form method="post" action="/" enctype="multipart/form-data">
+  <label>File
+    <input type="file" name="file" required>
+  </label>
+  <label>4-digit PIN
+    <input type="text" name="pin" inputmode="numeric" pattern="\d{4}" maxlength="4" minlength="4" required placeholder="1234" autocomplete="off">
+  </label>
+  <label>Expires
+    <select name="expiry" required>
+      <option value="never">Never</option>
+      <option value="1h">In 1 hour</option>
+      <option value="3h" selected>In 3 hours</option>
+      <option value="10h">In 10 hours</option>
+      <option value="24h">In 24 hours</option>
+      <option value="7d">In 7 days</option>
+    </select>
+  </label>
+  <button type="submit">Upload</button>
+</form>
+{{end}}

@@ -1,0 +1,104 @@
+{{define "layout"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{.Title}} · Fileshare</title>
+  <style>
+    :root {
+      --bg: #f3efe6;
+      --ink: #1c1a16;
+      --muted: #5c564c;
+      --accent: #0f6b5c;
+      --accent-ink: #f7fffc;
+      --danger: #8b2e2e;
+      --card: #fffdf8;
+      --line: #d9d0c0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% -10%, #d7ebe4 0%, transparent 55%),
+        radial-gradient(ellipse 70% 45% at 100% 0%, #efe2c8 0%, transparent 50%),
+        var(--bg);
+    }
+    main {
+      max-width: 28rem;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 4rem;
+    }
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.35rem;
+    }
+    .sub { color: var(--muted); margin: 0 0 1.5rem; line-height: 1.45; }
+    form, .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: grid;
+      gap: 0.9rem;
+    }
+    label { display: grid; gap: 0.35rem; font-size: 0.9rem; font-weight: 600; }
+    input[type="password"], input[type="text"], input[type="file"], select {
+      font: inherit;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+    }
+    input[type="file"] { padding: 0.45rem; }
+    button, .btn {
+      font: inherit;
+      font-weight: 650;
+      border: 0;
+      border-radius: 8px;
+      padding: 0.7rem 1rem;
+      background: var(--accent);
+      color: var(--accent-ink);
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+    }
+    button.secondary { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+    .error {
+      color: var(--danger);
+      background: #f8ecec;
+      border: 1px solid #e5c7c7;
+      border-radius: 8px;
+      padding: 0.7rem 0.85rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    .ok {
+      color: var(--accent);
+      background: #e7f5f1;
+      border: 1px solid #b7ddd3;
+      border-radius: 8px;
+      padding: 0.85rem;
+      word-break: break-all;
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .brand { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    {{template "content" .}}
+  </main>
+</body>
+</html>{{end}}
